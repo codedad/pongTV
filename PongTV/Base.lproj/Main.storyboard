@@ -1,13 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="9038" systemVersion="15A226f" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" initialViewController="499-42-d0g">
+<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" initialViewController="499-42-d0g">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9026"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="C64_Pro-STYLE.ttf">
+            <string>C64Pro</string>
+            <string>C64Pro</string>
+            <string>C64Pro</string>
+            <string>C64Pro</string>
+            <string>C64Pro</string>
+            <string>C64Pro</string>
+            <string>C64Pro</string>
+            <string>C64Pro</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--Game View Controller-->
         <scene sceneID="dEh-eV-dlg">
             <objects>
-                <viewController id="499-42-d0g" customClass="GameViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="499-42-d0g" customClass="GameViewController" customModule="PongTV" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TiC-Vw-u93"/>
                         <viewControllerLayoutGuide type="bottom" id="3TX-uQ-fmp"/>
@@ -15,12 +27,168 @@
                     <view key="view" contentMode="scaleToFill" id="weF-Pa-zaM" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PNg-2r-u2E" userLabel="Menu View">
+                                <rect key="frame" x="1300" y="340" width="500" height="400"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pong TV" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mPG-aQ-0fx">
+                                        <rect key="frame" x="0.0" y="0.0" width="500" height="70"/>
+                                        <animations/>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="OH7-Sj-6RS"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="C64Pro" family="C64 Pro" pointSize="40"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mZG-u4-65l">
+                                        <rect key="frame" x="0.0" y="80" width="500" height="70"/>
+                                        <animations/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="AR0-xL-vUP"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="C64Pro" family="C64 Pro" pointSize="40"/>
+                                        <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                        <state key="normal" title="Start game"/>
+                                        <connections>
+                                            <action selector="buttonTouchedStartGame:" destination="499-42-d0g" eventType="primaryActionTriggered" id="2hZ-EI-wks"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HVP-uG-rCt">
+                                        <rect key="frame" x="0.0" y="155" width="500" height="70"/>
+                                        <animations/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="v2f-ED-9oV"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="C64Pro" family="C64 Pro" pointSize="40"/>
+                                        <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                        <state key="normal" title="Change #"/>
+                                        <connections>
+                                            <action selector="buttonTouchedChgRounds:" destination="499-42-d0g" eventType="primaryActionTriggered" id="2du-V2-P8B"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rounds #: 15" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9G3-V4-NSp">
+                                        <rect key="frame" x="0.0" y="230" width="500" height="70"/>
+                                        <animations/>
+                                        <color key="backgroundColor" red="0.73960524797439575" green="0.73958313465118408" blue="0.73959559202194214" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="6jI-u5-9d6"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="C64Pro" family="C64 Pro" pointSize="40"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="mPG-aQ-0fx" firstAttribute="width" secondItem="PNg-2r-u2E" secondAttribute="width" id="94k-xf-Spk"/>
+                                    <constraint firstItem="9G3-V4-NSp" firstAttribute="top" secondItem="HVP-uG-rCt" secondAttribute="bottom" constant="5" id="OFW-Vs-9AF"/>
+                                    <constraint firstItem="mZG-u4-65l" firstAttribute="top" secondItem="mPG-aQ-0fx" secondAttribute="bottom" constant="10" id="P4F-hA-2v1"/>
+                                    <constraint firstAttribute="width" constant="500" id="U77-Hl-AJb"/>
+                                    <constraint firstItem="HVP-uG-rCt" firstAttribute="top" secondItem="mZG-u4-65l" secondAttribute="bottom" constant="5" id="Wpz-qr-sKa"/>
+                                    <constraint firstItem="mPG-aQ-0fx" firstAttribute="top" secondItem="PNg-2r-u2E" secondAttribute="top" id="YdI-Rt-eKv"/>
+                                    <constraint firstAttribute="height" constant="400" id="ddQ-aZ-hnV"/>
+                                    <constraint firstItem="9G3-V4-NSp" firstAttribute="width" secondItem="PNg-2r-u2E" secondAttribute="width" id="edf-Sq-l9E"/>
+                                    <constraint firstItem="mPG-aQ-0fx" firstAttribute="centerX" secondItem="PNg-2r-u2E" secondAttribute="centerX" id="gIf-su-Pyv"/>
+                                    <constraint firstItem="HVP-uG-rCt" firstAttribute="centerX" secondItem="PNg-2r-u2E" secondAttribute="centerX" id="lnt-1a-RsF"/>
+                                    <constraint firstItem="HVP-uG-rCt" firstAttribute="width" secondItem="PNg-2r-u2E" secondAttribute="width" id="nJQ-CA-P2a"/>
+                                    <constraint firstItem="mZG-u4-65l" firstAttribute="centerX" secondItem="PNg-2r-u2E" secondAttribute="centerX" id="oHz-8W-WU3"/>
+                                    <constraint firstItem="9G3-V4-NSp" firstAttribute="centerX" secondItem="PNg-2r-u2E" secondAttribute="centerX" id="r6E-qa-3HX"/>
+                                    <constraint firstItem="mZG-u4-65l" firstAttribute="width" secondItem="PNg-2r-u2E" secondAttribute="width" id="w6y-fV-Dmt"/>
+                                </constraints>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YzI-rr-uvW" userLabel="Pause View">
+                                <rect key="frame" x="710" y="340" width="500" height="400"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pong TV" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HcA-kE-LxS">
+                                        <rect key="frame" x="0.0" y="0.0" width="500" height="70"/>
+                                        <animations/>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="XLP-wb-l6K"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="C64Pro" family="C64 Pro" pointSize="40"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game is paused. " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="it0-xs-Aew">
+                                        <rect key="frame" x="0.0" y="80" width="500" height="49"/>
+                                        <animations/>
+                                        <color key="backgroundColor" red="0.73960524800000005" green="0.73958313470000003" blue="0.73959559200000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="49" id="kaW-si-UJ2"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="C64Pro" family="C64 Pro" pointSize="30"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3F5-u4-tIW">
+                                        <rect key="frame" x="0.0" y="205" width="500" height="70"/>
+                                        <animations/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="r4X-IH-iIe"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="C64Pro" family="C64 Pro" pointSize="36"/>
+                                        <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                        <state key="normal" title="Continue game"/>
+                                        <connections>
+                                            <action selector="buttonTouchedContinue:" destination="499-42-d0g" eventType="primaryActionTriggered" id="XYV-OW-njv"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Press MENU to quit." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NlH-VH-XNk">
+                                        <rect key="frame" x="0.0" y="131" width="500" height="49"/>
+                                        <animations/>
+                                        <color key="backgroundColor" red="0.73960524800000005" green="0.73958313470000003" blue="0.73959559200000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="49" id="HKx-pO-Ber"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="C64Pro" family="C64 Pro" pointSize="29"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="it0-xs-Aew" firstAttribute="centerX" secondItem="YzI-rr-uvW" secondAttribute="centerX" id="2Ze-3b-t4Y"/>
+                                    <constraint firstItem="3F5-u4-tIW" firstAttribute="top" secondItem="NlH-VH-XNk" secondAttribute="bottom" constant="10" id="2lx-f4-Ydx"/>
+                                    <constraint firstItem="3F5-u4-tIW" firstAttribute="width" secondItem="YzI-rr-uvW" secondAttribute="width" id="G8G-Bm-F32"/>
+                                    <constraint firstItem="NlH-VH-XNk" firstAttribute="top" secondItem="it0-xs-Aew" secondAttribute="bottom" id="Grl-ml-bwr"/>
+                                    <constraint firstItem="NlH-VH-XNk" firstAttribute="width" secondItem="YzI-rr-uvW" secondAttribute="width" id="HoN-Po-TT3"/>
+                                    <constraint firstItem="it0-xs-Aew" firstAttribute="top" secondItem="HcA-kE-LxS" secondAttribute="bottom" constant="10" id="KJ4-ds-dl4"/>
+                                    <constraint firstItem="it0-xs-Aew" firstAttribute="width" secondItem="YzI-rr-uvW" secondAttribute="width" id="Kcd-WD-kAp"/>
+                                    <constraint firstAttribute="width" constant="500" id="RbV-pY-WTX"/>
+                                    <constraint firstItem="HcA-kE-LxS" firstAttribute="centerX" secondItem="YzI-rr-uvW" secondAttribute="centerX" id="XqY-Kd-qyO"/>
+                                    <constraint firstItem="HcA-kE-LxS" firstAttribute="top" secondItem="YzI-rr-uvW" secondAttribute="top" id="Zmh-D1-YQX"/>
+                                    <constraint firstAttribute="height" constant="400" id="ljZ-GM-oSm"/>
+                                    <constraint firstItem="3F5-u4-tIW" firstAttribute="centerX" secondItem="YzI-rr-uvW" secondAttribute="centerX" id="ttJ-z9-B0C"/>
+                                    <constraint firstItem="NlH-VH-XNk" firstAttribute="centerX" secondItem="YzI-rr-uvW" secondAttribute="centerX" id="x0y-Kw-rTs"/>
+                                    <constraint firstItem="HcA-kE-LxS" firstAttribute="width" secondItem="YzI-rr-uvW" secondAttribute="width" id="zx3-ei-1ZM"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <animations/>
+                        <constraints>
+                            <constraint firstItem="PNg-2r-u2E" firstAttribute="centerX" secondItem="weF-Pa-zaM" secondAttribute="centerX" id="8Ay-43-lQX"/>
+                            <constraint firstItem="YzI-rr-uvW" firstAttribute="centerY" secondItem="weF-Pa-zaM" secondAttribute="centerY" id="cKY-cD-Zjl"/>
+                            <constraint firstItem="PNg-2r-u2E" firstAttribute="centerY" secondItem="weF-Pa-zaM" secondAttribute="centerY" id="dk1-DN-O9P"/>
+                            <constraint firstItem="YzI-rr-uvW" firstAttribute="centerX" secondItem="weF-Pa-zaM" secondAttribute="centerX" id="phJ-r0-f1f"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="labelRounds" destination="9G3-V4-NSp" id="uZw-7i-a8g"/>
+                        <outlet property="menuView" destination="PNg-2r-u2E" id="x5H-sq-qtG"/>
+                        <outlet property="pausedView" destination="YzI-rr-uvW" id="dkQ-df-n5X"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dFW-Nd-Df7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="651" y="554"/>
+            <point key="canvasLocation" x="859" y="930"/>
         </scene>
     </scenes>
 </document>

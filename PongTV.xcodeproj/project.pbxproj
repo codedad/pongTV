@@ -14,6 +14,13 @@
 		662DC01A1BCBC5760066ABD5 /* Game.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 662DC0191BCBC5760066ABD5 /* Game.xcassets */; };
 		662DC01D1BCBC5760066ABD5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 662DC01B1BCBC5760066ABD5 /* Main.storyboard */; };
 		662DC01F1BCBC5770066ABD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 662DC01E1BCBC5770066ABD5 /* Assets.xcassets */; };
+		662DC0271BCBD53E0066ABD5 /* Commons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662DC0261BCBD53E0066ABD5 /* Commons.swift */; };
+		662DC0291BCBED920066ABD5 /* Arena.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662DC0281BCBED920066ABD5 /* Arena.swift */; };
+		662DC02B1BCD16880066ABD5 /* C64_Pro-STYLE.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 662DC02A1BCD16880066ABD5 /* C64_Pro-STYLE.ttf */; };
+		662DC02D1BCD2A550066ABD5 /* Paddle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662DC02C1BCD2A550066ABD5 /* Paddle.swift */; };
+		66736E921BD3B29E00A5F0A2 /* Controllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66736E911BD3B29E00A5F0A2 /* Controllers.swift */; };
+		66C7285F1BE224C700BB8523 /* Ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C7285E1BE224C700BB8523 /* Ball.swift */; };
+		66C728621BE25C2A00BB8523 /* CGVector+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C728611BE25C2A00BB8523 /* CGVector+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +33,13 @@
 		662DC01C1BCBC5760066ABD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		662DC01E1BCBC5770066ABD5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		662DC0201BCBC5770066ABD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		662DC0261BCBD53E0066ABD5 /* Commons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Commons.swift; sourceTree = "<group>"; };
+		662DC0281BCBED920066ABD5 /* Arena.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Arena.swift; sourceTree = "<group>"; };
+		662DC02A1BCD16880066ABD5 /* C64_Pro-STYLE.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "C64_Pro-STYLE.ttf"; sourceTree = "<group>"; };
+		662DC02C1BCD2A550066ABD5 /* Paddle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Paddle.swift; sourceTree = "<group>"; };
+		66736E911BD3B29E00A5F0A2 /* Controllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Controllers.swift; sourceTree = "<group>"; };
+		66C7285E1BE224C700BB8523 /* Ball.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ball.swift; sourceTree = "<group>"; };
+		66C728611BE25C2A00BB8523 /* CGVector+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGVector+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +72,12 @@
 		662DC0101BCBC5760066ABD5 /* PongTV */ = {
 			isa = PBXGroup;
 			children = (
+				662DC02A1BCD16880066ABD5 /* C64_Pro-STYLE.ttf */,
+				66C728611BE25C2A00BB8523 /* CGVector+Extensions.swift */,
+				662DC0261BCBD53E0066ABD5 /* Commons.swift */,
+				662DC0281BCBED920066ABD5 /* Arena.swift */,
+				662DC02C1BCD2A550066ABD5 /* Paddle.swift */,
+				66C7285E1BE224C700BB8523 /* Ball.swift */,
 				662DC0111BCBC5760066ABD5 /* AppDelegate.swift */,
 				662DC0131BCBC5760066ABD5 /* GameScene.sks */,
 				662DC0151BCBC5760066ABD5 /* GameScene.swift */,
@@ -66,6 +86,7 @@
 				662DC01B1BCBC5760066ABD5 /* Main.storyboard */,
 				662DC01E1BCBC5770066ABD5 /* Assets.xcassets */,
 				662DC0201BCBC5770066ABD5 /* Info.plist */,
+				66736E911BD3B29E00A5F0A2 /* Controllers.swift */,
 			);
 			path = PongTV;
 			sourceTree = "<group>";
@@ -128,6 +149,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				662DC01D1BCBC5760066ABD5 /* Main.storyboard in Resources */,
+				662DC02B1BCD16880066ABD5 /* C64_Pro-STYLE.ttf in Resources */,
 				662DC0141BCBC5760066ABD5 /* GameScene.sks in Resources */,
 				662DC01F1BCBC5770066ABD5 /* Assets.xcassets in Resources */,
 				662DC01A1BCBC5760066ABD5 /* Game.xcassets in Resources */,
@@ -141,7 +163,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66C7285F1BE224C700BB8523 /* Ball.swift in Sources */,
+				662DC0271BCBD53E0066ABD5 /* Commons.swift in Sources */,
+				66C728621BE25C2A00BB8523 /* CGVector+Extensions.swift in Sources */,
 				662DC0161BCBC5760066ABD5 /* GameScene.swift in Sources */,
+				662DC0291BCBED920066ABD5 /* Arena.swift in Sources */,
+				662DC02D1BCD2A550066ABD5 /* Paddle.swift in Sources */,
+				66736E921BD3B29E00A5F0A2 /* Controllers.swift in Sources */,
 				662DC0181BCBC5760066ABD5 /* GameViewController.swift in Sources */,
 				662DC0121BCBC5760066ABD5 /* AppDelegate.swift in Sources */,
 			);
@@ -285,6 +313,7 @@
 				662DC0251BCBC5770066ABD5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

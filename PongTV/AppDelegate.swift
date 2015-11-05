@@ -12,10 +12,18 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
-
+  var g_rounds : Int?
+  var g_gamestate: Int?
+  var g_prevgamestate: Int?
 
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 		// Override point for customization after application launch.
+    for family: AnyObject in UIFont.familyNames() {
+      print("Font Family: \(family)")
+      for font: AnyObject in UIFont.fontNamesForFamilyName(family as! NSString as String) {
+        print("Font Name: \(font)")
+      }
+    }
 		return true
 	}
 
