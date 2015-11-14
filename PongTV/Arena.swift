@@ -21,6 +21,7 @@ class Arena: SKNode {
   
   init(size: CGSize) {
     super.init()
+    paddleList = [Paddle]()
     arenaSize = size
     NSLog("arenaSize: \(arenaSize)")
     self.addFences()
@@ -61,7 +62,7 @@ class Arena: SKNode {
     fenceBottom.physicsBody?.angularDamping = 0
   }
   
-  func addLabel(txtAlign:SKLabelHorizontalAlignmentMode, text:String, scoreNodeName:String) {
+  func addLabel(txtAlign:SKLabelHorizontalAlignmentMode, text:String, nodeNameIdx:String) {
     var xPos = CGFloat(0)
     if txtAlign == .Left {
       xPos = -arenaSize.width/2 + 50
@@ -69,6 +70,7 @@ class Arena: SKNode {
       xPos = arenaSize.width/2 - 50
     }
     let name = SKLabelNode(fontNamed:"C64Pro")
+    name.name = Const.NodeName.PlayerName + nodeNameIdx
     name.text = text
     name.fontSize = 40
     name.position = CGPoint(x: xPos, y:0)
@@ -78,7 +80,7 @@ class Arena: SKNode {
     self.addChild(name)
     
     let score = SKLabelNode(fontNamed:"C64Pro")
-    score.name = scoreNodeName
+    score.name = Const.NodeName.Score + nodeNameIdx
     score.text = "0"
     score.fontSize = 40
     score.position = CGPoint(x: xPos, y:-60)
@@ -89,8 +91,23 @@ class Arena: SKNode {
   }
 
   func addLabels() {
-    self.addLabel(.Left, text: "Computer", scoreNodeName: Const.NodeName.Score+"0")
-    self.addLabel(.Right, text: "Player1", scoreNodeName: Const.NodeName.Score+"1")
+    self.addLabel(.Left, text: "Computer", nodeNameIdx: "0")
+    self.addLabel(.Right, text: "Player1", nodeNameIdx: "1")
+  }
+  
+  func updateLabels() {
+    var playerIdx = 1
+    if paddleList[0].isAiOn {
+      (self.childNodeWithName(Const.NodeName.PlayerName + "0") as! SKLabelNode).text = "Computer"
+    } else {
+      (self.childNodeWithName(Const.NodeName.PlayerName + "0") as! SKLabelNode).text = "Player" + String(playerIdx)
+      playerIdx++
+    }
+    if paddleList[1].isAiOn {
+      (self.childNodeWithName(Const.NodeName.PlayerName + "1") as! SKLabelNode).text = "Computer"
+    } else {
+      (self.childNodeWithName(Const.NodeName.PlayerName + "1") as! SKLabelNode).text = "Player" + String(playerIdx)
+    }
   }
   
   func addPaddle(paddleOrintation:Const.PaddleOrientation, myPaddle: Paddle) {
@@ -100,7 +117,8 @@ class Arena: SKNode {
     } else if paddleOrintation == .Right {
       myPaddle.position = CGPoint(x: arenaSize.width/2 - 20, y:0)
     }
-
+    paddleList.append(myPaddle)
+    NSLog("paddleList cnt:\(paddleList.count)")
   }
   
   
@@ -108,6 +126,7 @@ class Arena: SKNode {
   func initScores() {
     for (index, _) in scores.enumerate() {
       scores[index] = 0
+      (self.childNodeWithName(Const.NodeName.Score + String(index)) as? SKLabelNode)?.text = String(scores[index])
     }
   }
   

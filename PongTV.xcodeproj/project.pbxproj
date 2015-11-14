@@ -18,6 +18,7 @@
 		662DC0291BCBED920066ABD5 /* Arena.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662DC0281BCBED920066ABD5 /* Arena.swift */; };
 		662DC02B1BCD16880066ABD5 /* C64_Pro-STYLE.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 662DC02A1BCD16880066ABD5 /* C64_Pro-STYLE.ttf */; };
 		662DC02D1BCD2A550066ABD5 /* Paddle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662DC02C1BCD2A550066ABD5 /* Paddle.swift */; };
+		6669EFF41BF7B368000A703E /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6669EFF31BF7B368000A703E /* MenuView.swift */; };
 		66736E921BD3B29E00A5F0A2 /* Controllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66736E911BD3B29E00A5F0A2 /* Controllers.swift */; };
 		66C7285F1BE224C700BB8523 /* Ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C7285E1BE224C700BB8523 /* Ball.swift */; };
 		66C728621BE25C2A00BB8523 /* CGVector+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C728611BE25C2A00BB8523 /* CGVector+Extensions.swift */; };
@@ -37,6 +38,7 @@
 		662DC0281BCBED920066ABD5 /* Arena.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Arena.swift; sourceTree = "<group>"; };
 		662DC02A1BCD16880066ABD5 /* C64_Pro-STYLE.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "C64_Pro-STYLE.ttf"; sourceTree = "<group>"; };
 		662DC02C1BCD2A550066ABD5 /* Paddle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Paddle.swift; sourceTree = "<group>"; };
+		6669EFF31BF7B368000A703E /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		66736E911BD3B29E00A5F0A2 /* Controllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Controllers.swift; sourceTree = "<group>"; };
 		66C7285E1BE224C700BB8523 /* Ball.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ball.swift; sourceTree = "<group>"; };
 		66C728611BE25C2A00BB8523 /* CGVector+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGVector+Extensions.swift"; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				662DC0131BCBC5760066ABD5 /* GameScene.sks */,
 				662DC0151BCBC5760066ABD5 /* GameScene.swift */,
 				662DC0171BCBC5760066ABD5 /* GameViewController.swift */,
+				6669EFF31BF7B368000A703E /* MenuView.swift */,
 				662DC0191BCBC5760066ABD5 /* Game.xcassets */,
 				662DC01B1BCBC5760066ABD5 /* Main.storyboard */,
 				662DC01E1BCBC5770066ABD5 /* Assets.xcassets */,
@@ -168,6 +171,7 @@
 				66C728621BE25C2A00BB8523 /* CGVector+Extensions.swift in Sources */,
 				662DC0161BCBC5760066ABD5 /* GameScene.swift in Sources */,
 				662DC0291BCBED920066ABD5 /* Arena.swift in Sources */,
+				6669EFF41BF7B368000A703E /* MenuView.swift in Sources */,
 				662DC02D1BCD2A550066ABD5 /* Paddle.swift in Sources */,
 				66736E921BD3B29E00A5F0A2 /* Controllers.swift in Sources */,
 				662DC0181BCBC5760066ABD5 /* GameViewController.swift in Sources */,

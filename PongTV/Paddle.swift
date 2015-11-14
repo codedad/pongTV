@@ -85,6 +85,10 @@ class Paddle: SKSpriteNode {
   }
   
   var isGameControllerRegistered: Bool {
+    if isAiOn {
+      // in case if it is Computer then do not assign gamecontroller
+      return true
+    }
     var isGameControllerRegistered = false
     if (self.gameController != nil) {
       isGameControllerRegistered = true
@@ -155,7 +159,7 @@ class Paddle: SKSpriteNode {
       self.yPosUpdateSign = (yValue>0 ? 1 : -1)
 
 //      let displacement = float2(x: xValue, y: yValue)
-      NSLog("[\(self.gameController!.playerIndex.rawValue)]: moving: \(self.yPosUpdate_cur)")
+      //NSLog("[\(self.gameController!.playerIndex.rawValue)]: moving: \(self.yPosUpdate_cur)")
 //      var curPos = self.position
   //    var modPosY = curPos.y + 229
       
@@ -301,10 +305,10 @@ class Paddle: SKSpriteNode {
 
         var currPos = self.position
         if dpadDown > 0.0 {
-          currPos.y -= CGFloat( 12 * dpadDown)
+          currPos.y -= CGFloat( 10 * dpadDown)
         }
         if dpadUp > 0.0 {
-          currPos.y += CGFloat( 12 * dpadUp)
+          currPos.y += CGFloat( 10 * dpadUp)
         }
         if currPos.y > Const.PaddleMinMax.Max {
           currPos.y = Const.PaddleMinMax.Max

@@ -16,6 +16,7 @@ class GameScene: SKScene {
   var player2 : Paddle?
   var ball : Ball!
   let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+  var currRound: Int = 0
   
   override func didMoveToView(view: SKView) {
     self.name = Const.NodeName.MainScene
@@ -40,58 +41,57 @@ class GameScene: SKScene {
     for pairedController in GCController.controllers() {
       playersControllerReg_Helper(pairedController)
     }
-    self.registerForGameControllerNotifications()
-    
+    self.registerNotifications()
   }
   
-//  override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-//    let touch = touches.first
-//    let prevLoc = touch!.previousLocationInView(self.view)
-//    let curLoc = touch!.locationInView(self.view)
-//    var dy = prevLoc.y - curLoc.y
-//    
-//    self.startGame()
-//
-//  }
-//  
-//  override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
-//    if let touch = touches.first {
-//      let prevLoc = touch.previousLocationInView(self.view)
-//      let curLoc = touch.locationInView(self.view)
-//      let dy = prevLoc.y - curLoc.y
-//      NSLog("dy: \(dy)")
-//      //userPaddle.moveByY(dy)
-//    }
-//  }
-  
   override func update(currentTime: CFTimeInterval) {
-    self.player1!.updatePlayer(currentTime, ball: self.ball)
-    self.player2!.updatePlayer(currentTime, ball: self.ball)
     
-    let whoLoses=ball.isOut()
-    if whoLoses != -1 {
-      changeGameState(Const.GameState.S4_FailNewBall)
-      NSLog("\(whoLoses)")
-      arena!.updateScores(whoLoses)
-      resetBall()
+    if appDelegate.g_gamestate==Const.GameState.S3_InGame || appDelegate.g_gamestate==Const.GameState.S2_BeforeStart
+       || appDelegate.g_gamestate==Const.GameState.S4_FailNewBall {
+      self.player1!.updatePlayer(currentTime, ball: self.ball)
+      self.player2!.updatePlayer(currentTime, ball: self.ball)
+      
+      let whoLoses=ball.isOut()
+      if whoLoses != -1 {
+        changeGameState(Const.GameState.S4_FailNewBall)
+        NSLog("\(whoLoses)")
+        arena!.updateScores(whoLoses)
+        resetBall()
+      }
     }
   }
   
   
+  // MARK: round mgmt
   
-  // gamecontroller stuff
+  func initRounds() {
+    currRound = 0
+  }
   
+  func addRoundOrTheEnd() {
+    currRound++
+    if currRound>=appDelegate.g_rounds {
+      NSNotificationCenter.defaultCenter().postNotificationName(Const.Notifications.EndGame, object: nil)
+    }
+  }
   
-  func registerForGameControllerNotifications() {
+  // MARK: gamecontroller stuff
+  
+  func registerNotifications() {
     GCController.startWirelessControllerDiscoveryWithCompletionHandler(nil)
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleControllerDidConnectNotification:", name: GCControllerDidConnectNotification, object: nil)
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleControllerDidDisconnectNotification:", name: GCControllerDidDisconnectNotification, object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleUpdateNamesNotification:", name: Const.Notifications.UpdateNames, object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleResetGameNotification:", name: Const.Notifications.ResetGame, object: nil)
+
   }
   
   deinit {
     GCController.stopWirelessControllerDiscovery()
     NSNotificationCenter.defaultCenter().removeObserver(self, name: GCControllerDidConnectNotification, object: nil)
     NSNotificationCenter.defaultCenter().removeObserver(self, name: GCControllerDidDisconnectNotification, object: nil)
+    NSNotificationCenter.defaultCenter().removeObserver(self, name: Const.Notifications.UpdateNames, object: nil)
+    NSNotificationCenter.defaultCenter().removeObserver(self, name: Const.Notifications.ResetGame, object: nil)
   }
   
   
@@ -118,11 +118,24 @@ class GameScene: SKScene {
     NSLog("DISconnectedGameController name \(disconnectedGameController.vendorName)")
   }
   
+  func handleUpdateNamesNotification(notification: NSNotification) {
+    if (arena != nil) {
+      NSLog("handleUpdateNamesNotification")
+      arena!.updateLabels()      
+    }
+  }
+
+  func handleResetGameNotification(notification: NSNotification) {
+    if (arena != nil) {
+      resetBall()
+      arena?.initScores()
+      self.scene?.paused = false
+    }
+  }
+
   
   
-  
-  // aux game funcs
-  
+  // MARK: aux game funcs
   
   func startGame() {
     ball.physicsBody?.applyImpulse(CGVector(dx: 3, dy: 3.5))
@@ -135,8 +148,8 @@ class GameScene: SKScene {
   }
   
   
-  // game state dependent code
   
+  // MARK: game state dependent code
   
   func changeGameState(toState:Int) {
     appDelegate.g_prevgamestate = appDelegate.g_gamestate

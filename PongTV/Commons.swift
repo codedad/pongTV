@@ -34,6 +34,7 @@ struct Const {
   
   struct NodeName {
     static let Score : String = "kscorenode"
+    static let PlayerName : String = "knamenode"
     static let MainScene : String = "kmainscene"
   }
 
@@ -62,6 +63,13 @@ struct Const {
     static let S5_GameEnded : Int = 5
     static let Sx_Paused : Int = 7
   }
+  
+  struct Notifications {
+    static let EndGame : String = "kendgamenotification"
+    static let UpdateNames : String = "kupdatenamesnotification"
+    static let ResetGame : String = "kresetgamenotification"
+  }
+
 
   
   
