@@ -16,5 +16,5 @@ TODO
  - computer ai
  - round handling
  - advanced controller handling
- - 
+ - enhanced gameplay
  
